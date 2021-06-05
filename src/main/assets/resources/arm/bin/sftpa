@@ -1,4 +1,0 @@
-#!/data/data/com.arachnoid.sshelper/files/usr/bin/sh
-
-. source-ssh-agent
-sftp "$@"

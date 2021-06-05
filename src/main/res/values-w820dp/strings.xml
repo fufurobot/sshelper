@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="sshelper">SSHelper</string>
-    <string name="server">Server</string>
-    <string name="network">Network</string>
-    <string name="restart_server_with_new_values">Restart server with new values</string>
-    <string name="restart_server">Restart Server</string>
-    <string name="help">Help</string>
-</resources>
