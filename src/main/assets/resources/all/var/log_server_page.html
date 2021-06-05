@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- Created on Oct 26, 2013 4:19:18 PM -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>SSHelper Activity Log</title>
+    <!-- Set refresh rate here (seconds) -->
+    <meta http-equiv="refresh" content="5" />
+    <meta name="GENERATOR" content="Arachnophilia 5.5" />
+    <meta name="FORMATTER" content="Arachnophilia 5.5" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style type="text/css">
+
+html,body,div {
+  font-family: Verdana, Tahoma, Helvetica, Arial;
+  margin: 0;
+  padding: 0;
+}
+
+html,body,form {
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  padding: 4px;
+  height:40px;
+}
+
+.copynote {
+  color: gray;
+  text-align: center;
+}
+
+.content {
+  /* height is 100% minus header and footer */
+  height: calc(100% - 80px);
+  /* width is 100% minus a reasonable margin */
+  width: calc(100% - 40px);
+  background-color: #000000;
+  overflow: scroll;
+  color: #ffffff;
+  border: 1px solid gray;
+  padding: 8px;
+  margin-left: 8px;
+  font-family:monospace;
+}
+
+img {
+  vertical-align: middle;
+  /* margin-right: 16px; */
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.ftr {
+  float: right;
+}
+
+pre {
+  padding-bottom: 4px;
+}
+
+table {
+  border-collapse:collapse;
+  width: calc(100% - 30px);
+  margin-left: 8px;
+}
+
+td {
+  width:33%;
+}
+
+.centered {
+  text-align:center;
+}
+    </style>
+    <script type="text/javascript" language="JavaScript">
+
+var ScrollSpace = ScrollSpace || {}
+
+ScrollSpace.suppress = false;
+ScrollSpace.gracePeriodSecs = 60;
+ScrollSpace.bigNum = 9999;
+
+ScrollSpace.getTimeSecs = function() {
+  return new Date().getTime()/1000;
+}
+
+ScrollSpace.scrollCheck = function() {
+  if(typeof(Storage)!=="undefined") {
+    var scroll = document.myform.scroll.checked;
+    localStorage.setItem('scroll',scroll);
+    localStorage.setItem('vpos',ScrollSpace.display.scrollTop);
+    if(scroll) {
+      window.location.href = window.location.href;
+    }
+  }
+  else {
+    document.myform.scroll.checked = true;
+  }
+}
+
+window.onbeforeunload = function() {
+  if(typeof(Storage)!=="undefined") {
+    localStorage.setItem('scroll',document.myform.scroll.checked);
+    localStorage.setItem('vpos',ScrollSpace.display.scrollTop);
+  }
+}
+
+window.onload = function() {
+  ScrollSpace.display = document.getElementById("disp");
+  if(typeof(Storage)!=="undefined") {
+    var val = localStorage.getItem('scroll');
+    var scroll = (val == 'true' || val == 'undefined');
+    document.myform.scroll.checked = scroll;
+    ScrollSpace.suppress = true;
+    if(scroll) {
+      ScrollSpace.display.scrollTop = ScrollSpace.bigNum;
+    }
+    else {
+      var now = ScrollSpace.getTimeSecs();
+      val = localStorage.getItem('lastScroll');
+      var last = (val == 'undefined')?-1:parseFloat(val);
+      if(now > last + ScrollSpace.gracePeriodSecs) {
+        ScrollSpace.display.scrollTop = ScrollSpace.bigNum;
+        document.myform.scroll.checked = true;
+      }
+      else {
+        val = localStorage.getItem('vpos');
+        ScrollSpace.display.scrollTop = (val == 'undefined')?ScrollSpace.bigNum:val;
+      }
+    }
+  }
+}
+
+// user scrolled, so turn off scroll checkbox
+ScrollSpace.dispScrolled = function() {
+  if(!ScrollSpace.suppress) {
+    document.myform.scroll.checked = false;
+    var now = ScrollSpace.getTimeSecs();
+    localStorage.setItem('lastScroll',now);
+  }
+  ScrollSpace.suppress = false;
+}
+    </script>
+  </head>
+  
+  <body>
+    <form name="myform">
+      <div class="header">
+        <table>
+          <tr>
+            <td>
+              <a href="http://arachnoid.com/android/SSHelper">
+                <img src="/favicon.ico" width="36" height="36" title="http://arachnoid.com/android/SSHelper"/>
+              </a>
+              SSHelper Activity Log : #DEVNAME#
+            </td>
+            <td class="centered">
+              <span class="copynote">To copy log, click display, then Ctrl+A, Ctrl+C</span>
+            </td>
+            <td>
+              <span class="ftr">
+                <input type="checkbox" name="scroll" checked="checked" onClick="ScrollSpace.scrollCheck();"/>
+                  &nbsp;Scroll to bottom
+
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      
+      <div id="disp" class="content" onScroll="ScrollSpace.dispScrolled();">
+        ####
+      </div>
+      
+      
+    </form>
+  </body>
+</html>

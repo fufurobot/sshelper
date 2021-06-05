@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.arachnoid.sshelper.PlaceHolderFragment">
+
+    <com.arachnoid.sshelper.MyEditText
+        android:id="@+id/terminal_view"
+        style="@style/TerminalStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cursorVisible="true"
+        android:gravity="bottom"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:scrollbars="vertical"
+        android:textCursorDrawable="@null"
+        android:typeface="monospace"/>
+
+</RelativeLayout>

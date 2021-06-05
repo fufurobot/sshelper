@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_status_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="horizontal"
+    android:padding="0sp" >
+
+    <!--<ImageButton
+        android:id="@+id/app_button"
+        style="@style/ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#c7ddff"
+        android:src="@mipmap/ic_launcher_dialog_foreground"
+        />
+        -->
+
+    <TextView
+        android:id="@+id/app_label"
+        style="@style/ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:paddingLeft="4dp"
+        android:text="@string/sshelper"
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
+
+    <TextView
+        style="@style/ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|" />
+
+    <TextView
+        android:id="@+id/status_text"
+        style="@style/ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:paddingLeft="4dp"
+        android:text="@string/server" />
+
+    <TextView
+        style="@style/ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|" />
+
+    <TextView
+        android:id="@+id/status_network"
+        style="@style/ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:paddingLeft="4dp"
+        android:text="@string/network" />
+
+</LinearLayout>
